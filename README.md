@@ -30,4 +30,4 @@ Continue building your app on:
 4. Vercel deploys the latest version from this repository
 
 ## Link
-**[https://v0.app/chat/game-review-website-b9TpXv1ZfK5?utm_source=yw061015-1968&utm_medium=referral&utm_campaign=share_chat&ref=BYMBR6]
+**[https://v0-game-review-website-x2.vercel.app/]
