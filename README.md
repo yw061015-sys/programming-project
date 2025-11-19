@@ -39,13 +39,11 @@ Continue building your app on:
 
 # 🎮 게임 리뷰 웹사이트 기획서
 
-*GitHub용 README.md 최적화 버전*
-
 ---
 
 ## 📌 프로젝트 개요
 
-**프로젝트명:** Gamer Review Hub (가칭)
+**프로젝트명:** Gamer Review
 **목적:**
 
 * 다양한 게임 리뷰 제공을 중심으로 한 게이밍 콘텐츠 플랫폼 구축
