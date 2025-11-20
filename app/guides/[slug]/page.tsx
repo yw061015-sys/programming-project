@@ -134,6 +134,153 @@ function getGuide(slug: string) {
       helpful: 1247,
       comments: 89,
     },
+    "civ-7-science-victory": {
+      title: "문명 7 승리 조건별 공략 - 과학 승리 편",
+      excerpt: "문명 7에서 과학 승리를 달성하기 위한 테크 트리 순서와 불가사의 건설 전략을 상세히 알아봅니다.",
+      content: `
+        <p>문명 7의 과학 승리는 이전 시리즈보다 더욱 복잡하고 전략적인 접근이 필요합니다. 우주 개발 경쟁에서 승리하기 위한 핵심 전략을 알아봅시다.</p>
+        
+        <h2>1. 초반 빌드 오더</h2>
+        <p>과학 승리의 핵심은 초반 캠퍼스 입지 선정입니다. 산맥 주변이나 지열 열하 주변을 선점하는 것이 중요합니다.</p>
+        <ul>
+          <li>정찰병 -> 투석병사 -> 개척자 -> 캠퍼스</li>
+          <li>초반 유레카 조건을 달성하여 기술 연구 속도를 가속화하세요.</li>
+        </ul>
+
+        <h2>2. 핵심 불가사의</h2>
+        <p>과학 승리에 필수적인 불가사의들입니다.</p>
+        <ul>
+          <li><strong>알렉산드리아 도서관:</strong> 모든 기술의 유레카를 발동시킵니다.</li>
+          <li><strong>옥스퍼드 대학:</strong> 무작위 기술 2개를 완료하고 과학 산출량을 증가시킵니다.</li>
+        </ul>
+
+        <h2>3. 후반 운영</h2>
+        <p>우주 공항 건설 후에는 프로젝트 가속을 위해 생산력에 집중해야 합니다. 알루미늄 자원 확보가 필수적입니다.</p>
+      `,
+      image: "/placeholder.svg?key=civ7-guide",
+      date: "2025년 3월 12일",
+      readTime: "20분 읽기",
+      category: "전략 가이드",
+      difficulty: "고급",
+      author: "문명하셨습니다",
+      slug: "civ-7-science-victory",
+      helpful: 3421,
+      comments: 512,
+    },
+    "ds2-delivery-routes": {
+      title: "데스 스트랜딩 2 배송 루트 최적화 가이드",
+      excerpt: "험난한 지형을 극복하고 가장 빠르게 화물을 배송할 수 있는 추천 루트와 장비 세팅을 공유합니다.",
+      content: `
+        <p>데스 스트랜딩 2의 새로운 맵은 더욱 험난해졌습니다. 하지만 적절한 장비와 루트를 선택하면 배송 시간을 획기적으로 단축할 수 있습니다.</p>
+        
+        <h2>1. 추천 장비 세팅</h2>
+        <p>이번 작에서 새로 추가된 '그래플링 훅'과 '호버 캐리어 Mk.2'는 필수입니다.</p>
+        
+        <h2>2. 주요 배송 루트</h2>
+        <h3>센트럴 노드 -> 마운틴 시티</h3>
+        <p>직선 거리로는 가깝지만 산맥이 가로막고 있습니다. 남쪽 우회로를 이용하면 BT와의 조우를 피할 수 있습니다.</p>
+      `,
+      image: "/placeholder.svg?key=ds2-guide",
+      date: "2025년 3월 10일",
+      readTime: "12분 읽기",
+      category: "탐험 가이드",
+      difficulty: "중급",
+      author: "전설의배달부",
+      slug: "ds2-delivery-routes",
+      helpful: 1890,
+      comments: 230,
+    },
+    "mgs-delta-boss-no-kill": {
+      title: "메탈 기어 솔리드 델타 보스전 노킬 공략",
+      excerpt: "모든 보스를 살상하지 않고 제압하는 방법. 스태미나 킬을 위한 무기 선택과 패턴 분석.",
+      content: `
+        <p>메탈 기어 솔리드 델타: 스네이크 이터의 리메이크에서도 노킬 클리어는 진정한 스네이크의 증명입니다.</p>
+        
+        <h2>오셀롯</h2>
+        <p>오셀롯은 재장전 타이밍을 노려야 합니다. Mk.22 마취총으로 머리를 노리세요.</p>
+        
+        <h2>더 페인</h2>
+        <p>벌들을 연막탄으로 쫓아내고 본체를 공격해야 합니다. 물속으로 들어가면 벌들의 공격을 피할 수 있습니다.</p>
+      `,
+      image: "/metal-gear-solid-delta-gameplay.jpg",
+      date: "2025년 3월 08일",
+      readTime: "18분 읽기",
+      category: "보스 공략",
+      difficulty: "고급",
+      author: "빅보스",
+      slug: "mgs-delta-boss-no-kill",
+      helpful: 4500,
+      comments: 670,
+    },
+    "pokemon-za-starters": {
+      title: "포켓몬 레전드 Z-A 스타팅 포켓몬 추천",
+      excerpt: "미르시티에서의 모험을 함께할 최고의 파트너는? 스타팅 포켓몬들의 최종 진화와 성능을 분석합니다.",
+      content: `
+        <p>포켓몬 레전드 Z-A의 스타팅 포켓몬 3마리는 각각 독특한 메가 진화 형태를 가지고 있습니다.</p>
+        
+        <h2>풀 타입</h2>
+        <p>최종 진화 시 풀/페어리 타입이 되며, 높은 특수 공격력을 가집니다.</p>
+        
+        <h2>불꽃 타입</h2>
+        <p>최종 진화 시 불꽃/강철 타입이 되며, 방어 상성이 매우 우수합니다.</p>
+        
+        <h2>물 타입</h2>
+        <p>최종 진화 시 물/격투 타입이 되며, 강력한 물리 공격수로 활약합니다.</p>
+      `,
+      image: "/placeholder.svg?key=pokemon-za",
+      date: "2025년 3월 05일",
+      readTime: "6분 읽기",
+      category: "초보자 가이드",
+      difficulty: "초급",
+      author: "오박사",
+      slug: "pokemon-za-starters",
+      helpful: 5600,
+      comments: 1200,
+    },
+    "borderlands-4-skill-trees": {
+      title: "보더랜드 4 캐릭터 스킬 트리 분석",
+      excerpt: "새로운 볼트 헌터들의 스킬 트리를 심층 분석하고, 플레이 스타일에 맞는 최적의 빌드를 추천합니다.",
+      content: `
+        <p>보더랜드 4의 새로운 볼트 헌터들은 더욱 다양하고 강력한 액션 스킬을 가지고 돌아왔습니다.</p>
+        
+        <h2>비스트마스터</h2>
+        <p>펫과 함께 싸우는 클래스입니다. 이번 작에서는 펫을 직접 조종할 수 있는 스킬이 추가되었습니다.</p>
+        
+        <h2>사이렌</h2>
+        <p>페이즈 워크를 활용한 근접 공격 빌드가 매우 강력합니다.</p>
+      `,
+      image: "/placeholder.svg?key=borderlands4",
+      date: "2025년 3월 03일",
+      readTime: "14분 읽기",
+      category: "빌드 가이드",
+      difficulty: "중급",
+      author: "볼트헌터",
+      slug: "borderlands-4-skill-trees",
+      helpful: 1100,
+      comments: 150,
+    },
+    "tekken-8-season-2-guide": {
+      title: "철권 8 시즌 2 신규 캐릭터 운영법",
+      excerpt: "시즌 2에 추가된 신규 캐릭터들의 콤보, 딜캐, 운영법을 프로게이머의 관점에서 분석했습니다.",
+      content: `
+        <p>철권 8 시즌 2 업데이트로 메타가 크게 변화했습니다. 신규 캐릭터들의 특징을 알아봅시다.</p>
+        
+        <h2>신규 캐릭터 A</h2>
+        <p>빠른 기동성과 강력한 하단 기술을 보유하고 있습니다. 벽 콤보 데미지가 절륜합니다.</p>
+        
+        <h2>신규 캐릭터 B</h2>
+        <p>반격기 위주의 수비적인 캐릭터입니다. 상대의 공격을 받아치는데 특화되어 있습니다.</p>
+      `,
+      image: "/tekken-8-gameplay.jpg",
+      date: "2025년 3월 01일",
+      readTime: "10분 읽기",
+      category: "캐릭터 공략",
+      difficulty: "고급",
+      author: "무릎",
+      slug: "tekken-8-season-2-guide",
+      helpful: 3200,
+      comments: 400,
+    },
   }
 
   return guideData[slug] || null

@@ -41,7 +41,7 @@ const newsItems = [
   {
     title: "몬스터 헌터 와일즈, 오픈 베타 테스트 일정 발표",
     excerpt: "캡콤의 기대작 몬스터 헌터 와일즈의 오픈 베타가 다음 달 시작됩니다. 새로운 무기 액션을 미리 체험해보세요.",
-    image: "/placeholder.svg?key=mh-wilds",
+    image: "/monster-hunter-wilds-gameplay.jpg",
     date: "2025년 3월 12일",
     readTime: "3분 읽기",
     category: "Event",
@@ -50,7 +50,7 @@ const newsItems = [
   {
     title: "더 위쳐 4: 폴라리스, 첫 게임플레이 트레일러 공개",
     excerpt: "CD 프로젝트 레드가 위쳐 시리즈의 새로운 시작을 알리는 '폴라리스'의 게임플레이 영상을 공개했습니다.",
-    image: "/witcher-4-ciri-gameplay.jpg",
+    image: "/elden-ring-shadow-of-the-erdtree-gameplay-screensh.jpg",
     date: "2025년 3월 10일",
     readTime: "6분 읽기",
     category: "Trailer",
@@ -60,7 +60,7 @@ const newsItems = [
     title: "발로란트 모바일, 글로벌 출시일 발표",
     excerpt:
       "라이엇 게임즈의 인기 FPS 발로란트가 드디어 모바일로 출시됩니다. PC 버전과의 크로스 프로그레션을 지원합니다.",
-    image: "/placeholder.svg?key=valorant-mobile",
+    image: "/valorant-mobile-gameplay.jpg",
     date: "2025년 3월 08일",
     readTime: "3분 읽기",
     category: "Mobile",

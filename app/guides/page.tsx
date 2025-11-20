@@ -24,7 +24,7 @@ const guides = [
   {
     title: "몬스터 헌터 와일즈 무기별 추천 콤보 가이드",
     excerpt: "대검부터 활까지, 몬스터 헌터 와일즈의 모든 무기별 핵심 콤보와 운용법을 정리했습니다.",
-    image: "/placeholder.svg?key=mh-wilds-guide",
+    image: "/monster-hunter-wilds-gameplay.jpg",
     date: "2025년 3월 15일",
     readTime: "15분 읽기",
     category: "무기 가이드",
@@ -44,7 +44,7 @@ const guides = [
   {
     title: "문명 7 승리 조건별 공략 - 과학 승리 편",
     excerpt: "문명 7에서 과학 승리를 달성하기 위한 테크 트리 순서와 불가사의 건설 전략을 상세히 알아봅니다.",
-    image: "/placeholder.svg?key=civ7-guide",
+    image: "/civilization-7-gameplay.jpg",
     date: "2025년 3월 12일",
     readTime: "20분 읽기",
     category: "전략 가이드",
@@ -54,7 +54,7 @@ const guides = [
   {
     title: "데스 스트랜딩 2 배송 루트 최적화 가이드",
     excerpt: "험난한 지형을 극복하고 가장 빠르게 화물을 배송할 수 있는 추천 루트와 장비 세팅을 공유합니다.",
-    image: "/placeholder.svg?key=ds2-guide",
+    image: "/death-stranding-2-gameplay.jpg",
     date: "2025년 3월 10일",
     readTime: "12분 읽기",
     category: "탐험 가이드",
@@ -74,7 +74,7 @@ const guides = [
   {
     title: "포켓몬 레전드 Z-A 스타팅 포켓몬 추천",
     excerpt: "미르시티에서의 모험을 함께할 최고의 파트너는? 스타팅 포켓몬들의 최종 진화와 성능을 분석합니다.",
-    image: "/placeholder.svg?key=pokemon-za",
+    image: "/pokemon-legends-za-gameplay.jpg",
     date: "2025년 3월 05일",
     readTime: "6분 읽기",
     category: "초보자 가이드",
@@ -84,7 +84,7 @@ const guides = [
   {
     title: "보더랜드 4 캐릭터 스킬 트리 분석",
     excerpt: "새로운 볼트 헌터들의 스킬 트리를 심층 분석하고, 플레이 스타일에 맞는 최적의 빌드를 추천합니다.",
-    image: "/placeholder.svg?key=borderlands4",
+    image: "/borderlands-4-gameplay.jpg",
     date: "2025년 3월 03일",
     readTime: "14분 읽기",
     category: "빌드 가이드",
