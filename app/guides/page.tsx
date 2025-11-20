@@ -1,119 +1,185 @@
+"use client"
+
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { GuideCard } from "@/components/guide-card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, Filter } from 'lucide-react'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Search, Filter, PenSquare } from "lucide-react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Textarea } from "@/components/ui/textarea"
+import { useState } from "react"
 
 // Mock data for guides
 const guides = [
   {
-    title: "헬다이버즈 2 초보자 완벽 가이드 - 생존부터 전략까지",
-    excerpt: "헬다이버즈 2를 처음 시작하는 플레이어를 위한 완벽한 가이드입니다. 기본 조작부터 고급 전략까지 모두 다룹니다.",
-    image: "/placeholder.svg?key=guide1",
-    date: "2024년 6월 18일",
-    readTime: "12분 읽기",
-    category: "초보자 가이드",
-    difficulty: "초급",
-    slug: "helldivers-2-beginner-guide",
-  },
-  {
-    title: "엘든 링 DLC 보스 공략 - 메시머 완벽 격파법",
-    excerpt: "황금 나무의 그림자에서 가장 어려운 보스 중 하나인 메시머를 쉽게 격파하는 방법을 알려드립니다.",
-    image: "/placeholder.svg?key=guide2",
-    date: "2024년 6월 17일",
-    readTime: "8분 읽기",
-    category: "보스 공략",
-    difficulty: "고급",
-    slug: "elden-ring-messmer-boss-guide",
-  },
-  {
-    title: "발더스 게이트 3 최적 빌드 가이드 - 클래스별 추천",
-    excerpt: "각 클래스별로 최고의 성능을 발휘할 수 있는 빌드를 소개합니다. 초보자부터 고수까지 모두에게 유용합니다.",
-    image: "/placeholder.svg?key=guide3",
-    date: "2024년 6월 15일",
+    title: "몬스터 헌터 와일즈 무기별 추천 콤보 가이드",
+    excerpt: "대검부터 활까지, 몬스터 헌터 와일즈의 모든 무기별 핵심 콤보와 운용법을 정리했습니다.",
+    image: "/placeholder.svg?key=mh-wilds-guide",
+    date: "2025년 3월 15일",
     readTime: "15분 읽기",
-    category: "빌드 가이드",
+    category: "무기 가이드",
     difficulty: "중급",
-    slug: "baldurs-gate-3-best-builds",
+    slug: "mh-wilds-weapon-combos",
   },
   {
-    title: "스타듀 밸리 완벽 농장 레이아웃 - 효율 극대화",
-    excerpt: "공간을 최대한 활용하면서도 아름다운 농장을 만드는 방법을 알려드립니다. 시즌별 작물 배치 팁 포함.",
-    image: "/placeholder.svg?key=guide4",
-    date: "2024년 6월 14일",
-    readTime: "10분 읽기",
+    title: "GTA 6 초반 돈 버는 방법 TOP 5",
+    excerpt: "바이스 시티에서 살아남기 위한 자금 마련 꿀팁! 초반에 빠르게 돈을 버는 효율적인 방법들을 소개합니다.",
+    image: "/gta-6-vice-city-gameplay.jpg",
+    date: "2025년 3월 14일",
+    readTime: "8분 읽기",
     category: "팁 & 트릭",
     difficulty: "초급",
-    slug: "stardew-valley-farm-layout",
+    slug: "gta-6-money-making-guide",
   },
   {
-    title: "리그 오브 레전드 시즌 14 정글 가이드",
-    excerpt: "시즌 14의 메타에 맞는 정글 플레이 방법과 챔피언 추천을 다룹니다. 갱킹 타이밍과 오브젝트 관리법 포함.",
-    image: "/placeholder.svg?key=guide5",
-    date: "2024년 6월 13일",
+    title: "문명 7 승리 조건별 공략 - 과학 승리 편",
+    excerpt: "문명 7에서 과학 승리를 달성하기 위한 테크 트리 순서와 불가사의 건설 전략을 상세히 알아봅니다.",
+    image: "/placeholder.svg?key=civ7-guide",
+    date: "2025년 3월 12일",
     readTime: "20분 읽기",
     category: "전략 가이드",
     difficulty: "고급",
-    slug: "lol-season-14-jungle-guide",
+    slug: "civ-7-science-victory",
   },
   {
-    title: "마인크래프트 레드스톤 기초 - 자동화 시스템 만들기",
-    excerpt: "레드스톤의 기본 원리부터 간단한 자동화 시스템을 만드는 방법까지 단계별로 설명합니다.",
-    image: "/placeholder.svg?key=guide6",
-    date: "2024년 6월 12일",
+    title: "데스 스트랜딩 2 배송 루트 최적화 가이드",
+    excerpt: "험난한 지형을 극복하고 가장 빠르게 화물을 배송할 수 있는 추천 루트와 장비 세팅을 공유합니다.",
+    image: "/placeholder.svg?key=ds2-guide",
+    date: "2025년 3월 10일",
+    readTime: "12분 읽기",
+    category: "탐험 가이드",
+    difficulty: "중급",
+    slug: "ds2-delivery-routes",
+  },
+  {
+    title: "메탈 기어 솔리드 델타 보스전 노킬 공략",
+    excerpt: "모든 보스를 살상하지 않고 제압하는 방법. 스태미나 킬을 위한 무기 선택과 패턴 분석.",
+    image: "/metal-gear-solid-delta-gameplay.jpg",
+    date: "2025년 3월 08일",
     readTime: "18분 읽기",
-    category: "튜토리얼",
-    difficulty: "중급",
-    slug: "minecraft-redstone-basics",
-  },
-  {
-    title: "오버워치 2 에임 향상 가이드 - 프로처럼 조준하기",
-    excerpt: "에임 실력을 향상시키는 구체적인 방법과 연습 루틴을 소개합니다. 감도 설정부터 크로스헤어 커스터마이징까지.",
-    image: "/placeholder.svg?key=guide7",
-    date: "2024년 6월 11일",
-    readTime: "14분 읽기",
-    category: "스킬 향상",
-    difficulty: "중급",
-    slug: "overwatch-2-aim-guide",
-  },
-  {
-    title: "디아블로 4 엔드게임 가이드 - 티어 100 달성하기",
-    excerpt: "나이트메어 던전 티어 100을 달성하기 위한 완벽한 로드맵입니다. 장비 파밍과 빌드 최적화 방법 포함.",
-    image: "/placeholder.svg?key=guide8",
-    date: "2024년 6월 10일",
-    readTime: "16분 읽기",
-    category: "엔드게임",
+    category: "보스 공략",
     difficulty: "고급",
-    slug: "diablo-4-endgame-guide",
+    slug: "mgs-delta-boss-no-kill",
+  },
+  {
+    title: "포켓몬 레전드 Z-A 스타팅 포켓몬 추천",
+    excerpt: "미르시티에서의 모험을 함께할 최고의 파트너는? 스타팅 포켓몬들의 최종 진화와 성능을 분석합니다.",
+    image: "/placeholder.svg?key=pokemon-za",
+    date: "2025년 3월 05일",
+    readTime: "6분 읽기",
+    category: "초보자 가이드",
+    difficulty: "초급",
+    slug: "pokemon-za-starters",
+  },
+  {
+    title: "보더랜드 4 캐릭터 스킬 트리 분석",
+    excerpt: "새로운 볼트 헌터들의 스킬 트리를 심층 분석하고, 플레이 스타일에 맞는 최적의 빌드를 추천합니다.",
+    image: "/placeholder.svg?key=borderlands4",
+    date: "2025년 3월 03일",
+    readTime: "14분 읽기",
+    category: "빌드 가이드",
+    difficulty: "중급",
+    slug: "borderlands-4-skill-trees",
+  },
+  {
+    title: "철권 8 시즌 2 신규 캐릭터 운영법",
+    excerpt: "시즌 2에 추가된 신규 캐릭터들의 콤보, 딜캐, 운영법을 프로게이머의 관점에서 분석했습니다.",
+    image: "/tekken-8-gameplay.jpg",
+    date: "2025년 3월 01일",
+    readTime: "10분 읽기",
+    category: "캐릭터 공략",
+    difficulty: "고급",
+    slug: "tekken-8-season-2-guide",
   },
 ]
 
-const categories = ["전체", "초보자 가이드", "보스 공략", "빌드 가이드", "팁 & 트릭", "전략 가이드", "튜토리얼"]
+const categories = [
+  "전체",
+  "무기 가이드",
+  "팁 & 트릭",
+  "전략 가이드",
+  "탐험 가이드",
+  "보스 공략",
+  "초보자 가이드",
+  "빌드 가이드",
+  "캐릭터 공략",
+]
 const difficulties = ["전체", "초급", "중급", "고급"]
 
 export default function GuidesPage() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
-      
+
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">게임 가이드</h1>
-            <p className="text-muted-foreground">게임을 더 잘 즐기기 위한 공략과 팁을 제공합니다.</p>
+            <p className="text-muted-foreground">2025년 최신 게임들의 공략과 팁을 확인하세요.</p>
           </div>
-          
-          <div className="flex flex-col gap-2 sm:flex-row">
-            <div className="relative">
+
+          <div className="flex flex-col gap-2 sm:flex-row items-center">
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="w-full sm:w-auto">
+                  <PenSquare className="mr-2 h-4 w-4" />
+                  가이드 작성
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[600px]">
+                <DialogHeader>
+                  <DialogTitle>새 가이드 작성</DialogTitle>
+                  <DialogDescription>나만의 게임 공략을 공유해주세요.</DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">제목</label>
+                    <Input placeholder="가이드 제목을 입력하세요" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">카테고리</label>
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="카테고리 선택" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {categories
+                          .filter((c) => c !== "전체")
+                          .map((cat) => (
+                            <SelectItem key={cat} value={cat}>
+                              {cat}
+                            </SelectItem>
+                          ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">내용</label>
+                    <Textarea placeholder="가이드 내용을 입력하세요" rows={10} />
+                  </div>
+                </div>
+                <div className="flex justify-end gap-2">
+                  <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+                    취소
+                  </Button>
+                  <Button onClick={() => setIsDialogOpen(false)}>작성 완료</Button>
+                </div>
+              </DialogContent>
+            </Dialog>
+
+            <div className="relative w-full sm:w-auto">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input placeholder="가이드 검색..." className="pl-8 w-full sm:w-[250px]" />
             </div>

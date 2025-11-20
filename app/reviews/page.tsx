@@ -3,14 +3,9 @@ import { SiteFooter } from "@/components/site-footer"
 import { BlogCard } from "@/components/blog-card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, Filter } from 'lucide-react'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Search, Filter, PenSquare } from "lucide-react"
+import Link from "next/link"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 // Mock data for reviews
 const reviews = [
@@ -100,15 +95,21 @@ export default function ReviewsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
-      
+
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">게임 리뷰</h1>
             <p className="text-muted-foreground">최신 게임에 대한 심층적인 분석과 평가를 확인하세요.</p>
           </div>
-          
+
           <div className="flex flex-col gap-2 sm:flex-row">
+            <Link href="/reviews/write">
+              <Button className="w-full sm:w-auto">
+                <PenSquare className="mr-2 h-4 w-4" />
+                리뷰 작성
+              </Button>
+            </Link>
             <div className="relative">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input placeholder="리뷰 검색..." className="pl-8 w-full sm:w-[250px]" />

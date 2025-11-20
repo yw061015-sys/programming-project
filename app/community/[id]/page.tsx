@@ -1,10 +1,12 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
+import type React from "react"
+
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { notFound } from 'next/navigation'
-import { Calendar, User, ThumbsUp, MessageSquare, Share2, Flag, ImagePlus, X } from 'lucide-react'
+import { notFound } from "next/navigation"
+import { Calendar, User, ThumbsUp, MessageSquare, Share2, Flag, ImagePlus, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
@@ -16,57 +18,61 @@ import { useAuth } from "@/hooks/use-auth"
 
 // Mock data function
 function getPost(id: string) {
-  return {
-    id: "1",
-    title: "엘든 링 DLC 보스 난이도 어떻게 생각하시나요?",
-    content: `메시머 보스 너무 어려운 것 같은데 저만 그런가요? 
-    
-    저는 레벨 150에 +25 무기로 도전했는데도 30번 넘게 죽었습니다. 패턴이 너무 빠르고 범위도 넓어서 회피하기가 정말 어렵더라고요.
-    
-    특히 2페이즈에서 불 공격이 추가되면서 난이도가 급상승하는 것 같습니다. 다들 어떻게 클리어하셨나요? 팁 좀 공유해주세요!`,
-    images: [
-      "/elden-ring-shadow-of-the-erdtree-gameplay-screensh.jpg",
-      "/dragons-dogma-2-gameplay.jpg"
-    ],
-    author: "게이머123",
-    authorId: "user1",
-    date: "2024년 6월 20일 14:30",
-    likes: 24,
-    category: "토론",
-    comments: [
-      {
-        id: "c1",
-        author: "프롬게이머",
-        authorId: "user5",
-        content: "저도 비슷하게 느꼈어요. 하지만 패턴을 외우고 나니 생각보다 쉬웠습니다. 2페이즈 불 공격은 왼쪽으로 구르면 대부분 피할 수 있어요!",
-        date: "2시간 전",
-        likes: 12,
-      },
-      {
-        id: "c2",
-        author: "소울본러버",
-        authorId: "user6",
-        content: "방패 들고 가드 카운터 위주로 싸우면 훨씬 쉽습니다. 공격 욕심 버리고 천천히 하세요.",
-        date: "1시간 전",
-        likes: 8,
-        images: ["/final-fantasy-7-rebirth-gameplay.jpg"],
-      },
-      {
-        id: "c3",
-        author: "RPG마스터",
-        authorId: "user3",
-        content: "마법 빌드로 하면 원거리에서 안전하게 딜 넣을 수 있어요. 혜성 아주르 추천합니다!",
-        date: "30분 전",
-        likes: 5,
-      },
-    ],
+  const postData: Record<string, any> = {
+    "1": {
+      id: "1",
+      title: "GTA 6 PC 사양 어느 정도 될까요?",
+      content: `이번에 컴퓨터 새로 맞추려고 하는데 5080으로 충분할까요? 권장 사양 예상이 궁금합니다.
+      
+      트레일러 보니까 그래픽이 장난 아니던데 최적화가 잘 되어 나올지 걱정이네요. 4K 60프레임 방어하려면 어느 정도 사양이 필요할까요?`,
+      images: [],
+      author: "컴알못",
+      authorId: "user1",
+      date: "2025년 3월 16일 10:30",
+      likes: 5,
+      category: "질문",
+      comments: [
+        {
+          id: "c1",
+          author: "하드웨어매니아",
+          authorId: "user10",
+          content:
+            "5080이면 충분하고도 남을 겁니다. 락스타가 최적화는 잘 하는 편이라 4070 정도로도 충분히 돌릴 수 있을 것 같아요.",
+          date: "10분 전",
+          likes: 2,
+        },
+        {
+          id: "c2",
+          author: "지나가던행인",
+          authorId: "user11",
+          content: "콘솔 베이스라 PC 요구 사양이 그렇게 높지는 않을 듯요.",
+          date: "5분 전",
+          likes: 1,
+        },
+      ],
+    },
+    "2": {
+      id: "2",
+      title: "몬헌 와일즈 베타 같이 하실 분 구합니다 (PS5)",
+      content:
+        "이번 주말 오픈 베타 같이 달리실 분! 태도 유저입니다. 초보도 환영해요. 디스코드 가능하신 분이면 좋겠습니다.",
+      images: ["/placeholder.svg?key=mh-wilds"],
+      author: "수렵피리장인",
+      authorId: "user2",
+      date: "2025년 3월 16일 09:00",
+      likes: 8,
+      category: "파티 모집",
+      comments: [],
+    },
   }
+
+  return postData[id] || postData["1"]
 }
 
 export default function CommunityPostPage({ params }: { params: { id: string } }) {
   const { user } = useAuth()
   const post = getPost(params.id)
-  const [newComment, setNewComment] = useState('')
+  const [newComment, setNewComment] = useState("")
   const [commentImageFiles, setCommentImageFiles] = useState<File[]>([])
   const [commentImagePreviews, setCommentImagePreviews] = useState<string[]>([])
 
@@ -77,7 +83,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
   const handleCommentImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || [])
     if (files.length + commentImageFiles.length > 3) {
-      alert('댓글에는 최대 3개의 이미지만 첨부할 수 있습니다.')
+      alert("댓글에는 최대 3개의 이미지만 첨부할 수 있습니다.")
       return
     }
 
@@ -99,15 +105,15 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
 
   const handleAddComment = () => {
     if (!user) {
-      alert('로그인이 필요합니다.')
+      alert("로그인이 필요합니다.")
       return
     }
     if (!newComment.trim()) {
-      alert('댓글 내용을 입력해주세요.')
+      alert("댓글 내용을 입력해주세요.")
       return
     }
-    console.log('[v0] Adding comment:', newComment, 'with images:', commentImageFiles)
-    setNewComment('')
+    console.log("[v0] Adding comment:", newComment, "with images:", commentImageFiles)
+    setNewComment("")
     setCommentImageFiles([])
     setCommentImagePreviews([])
   }
@@ -115,7 +121,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
-      
+
       <main className="flex-1">
         <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-12 lg:grid-cols-12">
           {/* Main Content */}
@@ -124,9 +130,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
               <Badge variant="secondary" className="mb-4">
                 {post.category}
               </Badge>
-              <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight md:text-4xl">
-                {post.title}
-              </h1>
+              <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight md:text-4xl">{post.title}</h1>
               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <User className="h-4 w-4" />
@@ -148,9 +152,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
             </div>
 
             <Card className="p-6 mb-8">
-              <div className="prose prose-lg dark:prose-invert max-w-none whitespace-pre-wrap">
-                {post.content}
-              </div>
+              <div className="prose prose-lg dark:prose-invert max-w-none whitespace-pre-wrap">{post.content}</div>
               {post.images && post.images.length > 0 && (
                 <div className="mt-6 grid grid-cols-2 gap-2">
                   {post.images.map((image, index) => (
@@ -185,9 +187,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
 
             {/* Comments Section */}
             <div>
-              <h2 className="mb-6 text-2xl font-bold">
-                댓글 {post.comments.length}개
-              </h2>
+              <h2 className="mb-6 text-2xl font-bold">댓글 {post.comments.length}개</h2>
 
               {/* Add Comment */}
               <Card className="mb-6 p-4">
@@ -205,7 +205,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
                         type="button"
                         variant="ghost"
                         size="sm"
-                        onClick={() => document.getElementById('comment-image-upload')?.click()}
+                        onClick={() => document.getElementById("comment-image-upload")?.click()}
                       >
                         <ImagePlus className="mr-2 h-4 w-4" />
                         이미지 추가 ({commentImageFiles.length}/3)
@@ -259,12 +259,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
                     <div className="mb-2 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div className="h-8 w-8 overflow-hidden rounded-full bg-muted">
-                          <Image
-                            src="/placeholder.svg"
-                            alt={comment.author}
-                            width={32}
-                            height={32}
-                          />
+                          <Image src="/placeholder.svg" alt={comment.author} width={32} height={32} />
                         </div>
                         <div>
                           <div className="font-semibold">{comment.author}</div>
@@ -304,12 +299,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
               <Card className="p-6">
                 <div className="mb-4 flex items-center gap-4">
                   <div className="h-12 w-12 overflow-hidden rounded-full bg-muted">
-                    <Image
-                      src="/placeholder.svg"
-                      alt={post.author}
-                      width={48}
-                      height={48}
-                    />
+                    <Image src="/placeholder.svg" alt={post.author} width={48} height={48} />
                   </div>
                   <div>
                     <h4 className="font-bold">{post.author}</h4>
@@ -330,7 +320,7 @@ export default function CommunityPostPage({ params }: { params: { id: string } }
                     <div className="text-xs text-muted-foreground">좋아요</div>
                   </div>
                 </div>
-                <Button variant="outline" className="mt-4 w-full">
+                <Button variant="outline" className="mt-4 w-full bg-transparent">
                   프로필 보기
                 </Button>
               </Card>
